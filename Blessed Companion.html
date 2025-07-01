@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blessed Companion - Christian Blog</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Blessed Companion is a Christian blog offering daily devotionals, Bible studies, and faith resources to inspire and encourage your walk with God.">
+    <meta name="keywords" content="Christian blog, devotionals, Bible study, faith, prayer, Genesis 1:1, God's Word, Christian encouragement, spiritual growth, gospel, Jesus, scripture, Christian living">
+    <meta name="author" content="Blessed Companion">
+    <meta property="og:title" content="Blessed Companion - Christian Blog">
+    <meta property="og:description" content="Discover inspiring devotionals, Bible studies, and faith resources to strengthen your walk with God.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blessedcompanion.com/">
+    <link rel="canonical" href="https://blessedcompanion.com/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "✞";
+            font-size: 2.5rem;
+            color: #d4af37;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: #d4af37;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><defs><radialGradient id="sky" cx="50%" cy="30%"><stop offset="0%" style="stop-color:%23ffd700;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23ff6b6b;stop-opacity:0.6"/></radialGradient></defs><rect width="1000" height="600" fill="url(%23sky)"/><path d="M0,400 Q250,350 500,400 T1000,400 L1000,600 L0,600 Z" fill="%23228b22" opacity="0.8"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+            scroll-margin-top: 120px; /* Ensures full hero is visible when navigated */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .verse-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 2rem auto;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .verse-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .verse-reference {
+            font-weight: bold;
+            color: #d4af37;
+        }
+
+        /* Main Content */
+        main {
+            background: white;
+            margin: 0 0 2rem 0; /* No top margin so it starts right after hero */
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 3rem;
+            scroll-margin-top: 120px;
+        }
+
+        /* Blog Posts */
+        .blog-posts h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(90deg, #fffbe6 60%, #f8f9fa 100%);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(212,175,55,0.08);
+            font-weight: bold;
+        }
+
+        .blog-posts h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: #d4af37;
+            margin: 1rem auto;
+        }
+
+        .post {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #f39c12);
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .post-meta::before {
+            content: "📅";
+        }
+
+        .post h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .post p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .read-more:hover {
+            color: #b8860b;
+            transform: translateX(5px);
+        }
+
+        .read-more::after {
+            content: "→";
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .daily-verse {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .daily-verse h4 {
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .categories {
+            list-style: none;
+        }
+
+        .categories li {
+            margin-bottom: 0.5rem;
+        }
+
+        .categories a {
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 0.5rem;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .categories a:hover {
+            background: #d4af37;
+            color: white;
+            transform: translateX(10px);
+        }
+
+        /* About Section */
+        #about-section {
+            background: #f8f9fa;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+            scroll-margin-top: 120px;
+        }
+        #about-section h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        #about-section ul {
+            margin: 1rem 0 2rem 2rem;
+            color: #444;
+        }
+        #about-section a {
+            color: #d4af37;
+            text-decoration: underline;
+        }
+
+        /* Genesis Section */
+        #genesis-section {
+            background: #fffbe6;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.12);
+            margin: 2rem 0;
+            padding: 2.5rem 1.5rem;
+            animation: fadeInUp 0.8s;
+        }
+        #genesis-section {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            background: #d4af37;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #b8860b;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            #about-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Blessed Companion</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#devotionals">Devotionals</a></li>
+                <li><a href="#contact-us">Connect</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Walking in His Light</h1>
+                <p>Discovering God's truth through Scripture and fellowship</p>
+                <div class="verse-highlight">
+                    <div class="verse-text">"Your word is a lamp for my feet, a light on my path."</div>
+                    <div class="verse-reference">- Psalm 119:105</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="content-wrapper" id="devotionals">
+            <section class="blog-posts">
+                <h2>Devotionals for You</h2>
+                <article class="post">
+                    <div class="post-meta">
+                        <span>July 01, 2025</span>
+                        <span>By Author</span>
+                    </div>
+                    <h3 style="color:#d4af37; font-size:2rem; text-align:center; letter-spacing:1px; margin-bottom:0.5rem;">
+                        🔥 IN THE BEGINNING—GOD! 🔥
+                    </h3>
+                    <p style="font-size:1.15rem; text-align:center; color:#764ba2; font-weight:bold; margin-bottom:1rem;">
+                        The Foundation of Everything Starts With Him
+                    </p>
+                    <blockquote style="background:#fffbe6; border-left:5px solid #d4af37; padding:1rem 1.5rem; margin:1rem 0; font-size:1.1rem; color:#2c3e50;">
+                        📖 <b>"In the beginning, God created the heavens and the earth." —Genesis 1:1 (ESV)</b>
+                    </blockquote>
+                    <p style="text-align:center; font-size:1.1rem;">
+                        If the entire cosmos rests on this truth, shouldn’t your life?
+                    </p>
+                    <a href="#" class="read-more" id="readMoreGenesis">Continue Reading</a>
+                </article>
+            </section>
+
+            <aside class="sidebar">
+                <div class="daily-verse">
+                    <h4>Verse of the Day</h4>
+                    <p>"In the beginning God created the heavens and the earth."</p>
+                    <small>- Genesis 1:1</small>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Interactive Genesis 1:1 Section -->
+        <section id="genesis-section">
+            <h1 style="color:#d4af37; text-align:center; font-size:2.5rem; margin-bottom:1rem;">🔥 IN THE BEGINNING—GOD! 🔥</h1>
+            <h2 style="text-align:center; color:#2c3e50; margin-bottom:1.5rem;">The Foundation of Everything Starts With Him</h2>
+            <p style="font-size:1.2rem; text-align:center; margin-bottom:1.5rem;">
+                📖 <strong>"In the beginning, God created the heavens and the earth." —Genesis 1:1 (ESV)</strong>
+            </p>
+            <p style="text-align:center; font-size:1.1rem;">
+                Before time, before space, before light pierced the darkness—<strong>there was GOD.</strong>
+            </p>
+            <p style="margin:1.5rem 0; text-align:center;">
+                The Bible doesn’t open with theories, debates, or human wisdom. <strong>It starts with an unshakable declaration of divine sovereignty.</strong>
+            </p>
+            <p style="text-align:center; font-weight:bold; color:#b8860b;">
+                No explanations. No apologies. Just absolute, unchanging TRUTH.
+            </p>
+            <hr style="margin:2rem 0;">
+            <h2 style="color:#764ba2;">🌌 Why Does This First Verse Matter?</h2>
+            <p>Because <strong>how you start determines how you finish.</strong></p>
+            <ul style="margin-left:1.5rem;">
+                <li>The universe didn’t begin by accident—it began with GOD.</li>
+                <li>Your life wasn’t an afterthought—it was designed with intention.</li>
+                <li>Your purpose isn’t random—it’s rooted in Him.</li>
+            </ul>
+            <p style="font-weight:bold;">If the entire cosmos rests on this truth, shouldn’t your life?</p>
+            <hr style="margin:2rem 0;">
+            <h2 style="color:#764ba2;">🚀 The Power of Starting With God</h2>
+            <p>
+                Most people build their lives on shaky foundations—money, success, relationships, or luck. <strong>But the strongest lives are built on GOD.</strong>
+            </p>
+            <ul style="margin-left:1.5rem;">
+                <li><strong>Start your day with Him.</strong></li>
+                <li><strong>Begin your plans with Him.</strong></li>
+                <li><strong>Anchor your dreams in Him.</strong></li>
+            </ul>
+            <p><strong>When God is first, everything else aligns.</strong></p>
+            <hr style="margin:2rem 0;">
+            <h2 style="color:#764ba2;">🔥 WHY Didn’t God Create Humans First?</h2>
+            <p>
+                Because <strong>He doesn’t do things haphazardly!</strong> Anyways, before introducing humanity, He set the stage:
+            </p>
+            <ul style="margin-left:1.5rem;">
+                <li>He spoke light into existence—because you were meant to walk in clarity, not confusion.</li>
+                <li>He separated the waters—because you were designed for order, not chaos.</li>
+                <li>He filled the earth with life—because you were never meant to lack.</li>
+            </ul>
+            <p><strong>You were His grand finale—the crown of creation.</strong></p>
+            <hr style="margin:2rem 0;">
+            <h2 style="color:#764ba2;">💥 Two Life-Changing Lessons From Genesis 1:1</h2>
+            <h3>1️⃣ FOUNDATIONS MATTER</h3>
+            <ul style="margin-left:1.5rem;">
+                <li>Skyscrapers don’t start at the top. <strong>They dig deep first.</strong></li>
+                <li>Great empires aren’t built overnight. <strong>They’re established on solid ground.</strong></li>
+                <li><strong>If your life feels unstable, check your foundation.</strong></li>
+            </ul>
+            <p style="font-style:italic; color:#b8860b;">✨ "Unless the Lord builds the house, those who build it labor in vain." —Psalm 127:1</p>
+            <h3>2️⃣ PLANNING PRECEDES PURPOSE</h3>
+            <p>
+                God didn’t create humans and <em>then</em> figure out the world. <strong>He prepared everything FIRST.</strong>
+            </p>
+            <ul style="margin-left:1.5rem;">
+                <li>Your destiny isn’t an accident.</li>
+                <li>Your provision was secured before you arrived.</li>
+                <li>Your steps were ordered before you took them.</li>
+            </ul>
+            <p><strong>So why rush into life without seeking His blueprint?</strong></p>
+            <hr style="margin:2rem 0;">
+            <h2 style="color:#764ba2;">🔔 YOUR TURN: What’s Your Life Built On?</h2>
+            <p>Is it…</p>
+            <ul style="margin-left:1.5rem;">
+                <li>💵 <strong>Wealth?</strong> (It fades.)</li>
+                <li>🎲 <strong>Luck?</strong> (It’s unreliable.)</li>
+                <li>📚 <strong>Knowledge?</strong> (It has limits.)</li>
+                <li>👥 <strong>People?</strong> (They change.)</li>
+                <li>🙌 <strong>GOD?</strong> (He never fails.)</li>
+            </ul>
+            <hr style="margin:2rem 0;">
+            <h2 style="color:#764ba2;">🔥 FINAL THOUGHT: Reset Your Beginning</h2>
+            <p>
+                If your life feels off-track, <strong>go back to the starting point.</strong>
+            </p>
+            <p style="font-size:1.3rem; font-weight:bold; color:#d4af37;">"In the beginning—GOD."</p>
+            <p>
+                Realign. Rebuild. Restore. <strong>Let Him be your FIRST WORD, your FIRST THOUGHT, your FIRST LOVE.</strong>
+            </p>
+            <p style="font-weight:bold; color:#228b22;">🚀 When God is your foundation, EVERYTHING changes.</p>
+            <hr style="margin:2rem 0;">
+            <h3 style="text-align:center;">✨ SHARE if you believe that EVERYTHING begins and ends with GOD! ✨</h3>
+            <p style="text-align:center; color:#764ba2;">
+                #GodFirst #BibleTruth #Genesis1v1 #FaithOverFear #PurposeDrivenLife
+            </p>
+            <hr style="margin:2rem 0;">
+            <h3>💬 QUESTION FOR YOU:</h3>
+            <p style="font-style:italic;">
+                "If you could restart one area of your life with GOD at the center, what would it be?"<br>
+            </p>
+            <div style="text-align:center; margin-top:2rem;">
+                <button onclick="hideGenesisSection()" style="background:#d4af37; color:#fff; border:none; border-radius:25px; padding:0.7rem 2rem; font-size:1.1rem; cursor:pointer; box-shadow:0 2px 8px rgba(212,175,55,0.15); transition:background 0.2s;">Back to Devotionals</button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-section">
+            <a id="about"></a>
+            <h2>About Blessed Companion</h2>
+            <p>
+                Blessed Companion is a Christian blog dedicated to spreading the light of God's Word and encouraging believers in their daily walk with Christ. Our mission is to provide uplifting devotionals, insightful Bible studies, and practical resources to help you grow in faith, hope, and love.
+            </p>
+            <p>
+                Whether you are new to the faith or have been walking with Jesus for years, we invite you to join our community, share your story, and discover the joy of fellowship in Christ.
+            </p>
+            <h3>Our Vision</h3>
+            <ul>
+                <li>To inspire daily devotion and prayer</li>
+                <li>To equip believers for Bible study and spiritual growth</li>
+                <li>To foster a loving, supportive Christian community</li>
+                <li>To encourage acts of service and outreach</li>
+            </ul>
+            <h3>Contact Us</h3>
+            <p>
+                Have questions or want to connect? Email us at <a href="mailto:blessedcompanion.info@gmail.com">blessedcompanion.info@gmail.com</a>
+            </p>
+            <!-- Contact Us Section -->
+            <section id="contact-us" style="margin-top:2rem;">
+                <h2>🔥 WE WANT TO HEAR FROM YOU! 🔥</h2>
+                <p>Your story matters. Your questions matter. Your faith journey matters.</p>
+                <p>
+                    While we don’t have a comment section (yet!), we’d LOVE to connect with you personally! Whether it’s:
+                </p>
+                <ul>
+                    <li>🙌 <strong>A testimony</strong>—How has God moved in your life?</li>
+                    <li>💡 <strong>A question</strong>—What’s on your heart about faith, purpose, or the Bible?</li>
+                    <li>🔥 <strong>A prayer request</strong>—Need breakthrough? We’ll stand with you in prayer.</li>
+                    <li>📖 <strong>A suggestion</strong>—What topics would you like us to explore next?</li>
+                </ul>
+                <h3>📩 Reach Out to Us!</h3>
+                <ul>
+                    <li>🔹 Email: <a href="mailto:blessedcompanion.info@gmail.com">blessedcompanion.info@gmail.com</a></li>
+                </ul>
+                <p>Let’s grow together! Your voice isn’t just heard—it’s valued.</p>
+                <blockquote>
+                    💬 "Iron sharpens iron!" (Proverbs 27:17)<br>
+                    We’re not meant to walk this faith journey alone. Your testimony could be the encouragement someone else needs today.
+                </blockquote>
+                <p>Now it’s YOUR turn! ✨</p>
+                <h3>🙏 Let Us Pray For You</h3>
+                <p>
+                    Struggling? Feeling stuck? Need a miracle? We believe in the power of prayer!<br>
+                    Send us your request, and we will lift you up in faith. No burden is too heavy for God!
+                </p>
+                <p>
+                    📥 Email/DM us now—you’re not alone!
+                </p>
+                <p>
+                    <strong>🔥 #LetsConnect #YourVoiceMatters #PrayerChangesThings</strong><br>
+                    Tag a friend who needs this reminder! 🙌
+                </p>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact-us">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="#devotionals">Daily Devotionals</a>
+                    <a href="#devotionals">Bible Reading Plan</a>
+                    <a href="#contact-us">Prayer Requests</a>
+                    <a href="#devotionals">Sermon Archive</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <a href="mailto:blessedcompanion.info@gmail.com">Email</a>
+                </div>
+            </div>
+            
+            <p>&copy; 2025 Gospel Light. All rights reserved. | Spreading God's love through His Word</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show Genesis 1:1 section and hide devotionals
+        document.addEventListener('DOMContentLoaded', function() {
+            var readMore = document.getElementById('readMoreGenesis');
+            if (readMore) {
+                readMore.onclick = function(e) {
+                    e.preventDefault();
+                    document.getElementById('devotionals').style.display = 'none';
+                    document.getElementById('genesis-section').style.display = 'block';
+                    window.scrollTo({ top: document.getElementById('genesis-section').offsetTop - 80, behavior: 'smooth' });
+                };
+            }
+        });
+        // Back button
+        function hideGenesisSection() {
+            document.getElementById('genesis-section').style.display = 'none';
+            document.getElementById('devotionals').style.display = 'grid';
+            window.scrollTo({ top: document.getElementById('devotionals').offsetTop - 80, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
